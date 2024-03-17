@@ -5,13 +5,13 @@ app = FastAPI(openapi_url="/api/v1/footballers/openapi.json", docs_url="/api/v1/
 footballers_router = APIRouter()
 
 footballers = [
-    {'footballers_id': 1, 'name': 'Mbappe',
+    {'clubs_id': 1, 'name': 'Mbappe',
      'country': 'France',
      'goals': '50', 'age': '34'},
-    {'footballers_id': 2, 'name': 'Ronaldo',
+    {'clubs_id': 2, 'name': 'Ronaldo',
      'country': 'Portugal',
      'goals': '5', 'age': '26'},
-    {'footballers_id': 3, 'name': 'Akinfeev',
+    {'clubs_id': 3, 'name': 'Akinfeev',
      'country': 'Russia',
      'goals': '90', 'age': '47'}
 ]
@@ -21,10 +21,10 @@ footballers = [
 async def read_footballers():
     return footballers
 
-@footballers_router.get("/{footballers_id}")
-async def read_footballer(footballers_id: int):
+@footballers_router.get("/{clubs_id}")
+async def read_footballer(clubs_id: int):
     for footballer in footballers:
-        if footballer['footballers_id'] == footballers_id:
+        if footballer['clubs_id'] == clubs_id:
             return footballer
     return None
 
