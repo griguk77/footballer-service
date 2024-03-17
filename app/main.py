@@ -1,54 +1,38 @@
 from fastapi import FastAPI, APIRouter
 
-'''
-from api.db import metadata, database, engine
-
-metadata.create_all(engine)
-'''
 app = FastAPI(openapi_url="/api/v1/footballers/openapi.json", docs_url="/api/v1/footballers/docs")
 
-footballers_router = APIRouter()
+companies_router = APIRouter()
 
-footballers = [
-    {'clubs_id': 1, 'name': 'Killian', 'surname': 'Mbappe', 'age': 24, 'goals': 135},
-    {'clubs_id': 2, 'name': 'Cristiano', 'surname': 'Ronaldo', 'age': 31, 'goals': 837}
+companies = [
+    {'companies_id': 1, 'name': 'Альфа-Банк',
+     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
+     'industry': 'Economy', 'age': '34'},
+    {'companies_id': 2, 'name': 'Ozon',
+     'descrption': 'Ведущая мультикатегорийная платформа электронной коммерции и одна из крупнейших интернет-компаний в России',
+     'industry': 'MarketPlace', 'age': '26'},
+    {'companies_id': 3, 'name': 'Apple',
+     'descrption': 'Американская корпорация, разработчик персональных и планшетных компьютеров, аудиоплееров, смартфонов, программного обеспечения и цифрового контента',
+     'industry': 'Electronic Device', 'age': '47'}
 ]
 
-animes = [
-    {'casts_id': 1, 'name':'Naruto', 'plot': 'Аниме для людей от 12+', 'genres': 'боевик'},
-    {'casts_id': 2, 'name':'Слабый герой', 'plot': 'Дорама для вечернего просмотра', 'genres': 'приключения'}
-]
 
+@companies_router.get("/")
+async def read_companies():
+    return companies
 
-@footballers_router.get("/")
-async def read_footballers():
-    return footballers
+@companies_router.get("/{companies_id}")
+async def read_company(companies_id: int):
+    for company in companies:
+        if company['companies_id'] == companies_id:
+            return company
+    return None
 
-
-@footballers_router.get("/{clubs_id}")
-async def read_footballer(clubs_id: int):
-    foots = []
-    for footballer in footballers:
-        if footballer['clubs_id'] == clubs_id:
-            foots.append(footballer)
-    return foots
-
-
-'''
-@app.on_event("startup")
-async def startup():
-    await database.connect()
-
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
-'''
-app.include_router(footballers_router, prefix='/api/v1/footballers', tags=['footballers'])
+app.include_router(companies_router, prefix='/api/v1/companies', tags=['companies'])
 
 if __name__ == '__main__':
     import uvicorn
     import os
-
     try:
         PORT = int(os.environ['PORT'])
     except KeyError as keyerr:

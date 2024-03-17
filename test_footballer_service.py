@@ -1,38 +1,26 @@
-'''import requests
-
-
-def test_get_all_footballer(url: str):
-    res = requests.get(url).json()
-    assert (res == [{'clubs_id': 1, 'name': 'Killian', 'surname': 'Mbappe', 'age': 24, 'goals': 135},
-                    {'clubs_id': 2, 'name': 'Cristiano', 'surname': 'Ronaldo', 'age': 31, 'goals': 837}])
-
-
-def test_get_footballer_by_id(url: str):
-    res = requests.get(url).json()
-    assert (res == {'clubs_id': 1, 'name': 'Killian', 'surname': 'Mbappe', 'age': 24, 'goals': 135})
-
-
-if __name__ == '__main__':
-    URL = 'http://127.0.0.1:80/api/v1/footballers/'
-    test_get_footballer_by_id(URL + '1')
-    test_get_all_footballer(URL)
-'''
-
 import requests
 
-def test_get_all_anime(url: str):
+def test_get_all_companies(url: str):
     res = requests.get(url).json()
-    assert(res == [{'casts_id': 1, 'name':'Naruto', 'plot': 'Аниме для людей от 12+', 'genres': 'боевик'},
-                   {'casts_id': 2, 'name':'Слабый герой', 'plot': 'Дорама для вечернего просмотра', 'genres': 'приключения'}])
+    assert(res == [{'companies_id': 1, 'name': 'Альфа-Банк',
+     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
+     'industry': 'Economy', 'age': '34'},
+    {'companies_id': 2, 'name': 'Ozon',
+     'descrption': 'Ведущая мультикатегорийная платформа электронной коммерции и одна из крупнейших интернет-компаний в России',
+     'industry': 'MarketPlace', 'age': '26'},
+    {'companies_id': 3, 'name': 'Apple',
+     'descrption': 'Американская корпорация, разработчик персональных и планшетных компьютеров, аудиоплееров, смартфонов, программного обеспечения и цифрового контента',
+     'industry': 'Electronic Device', 'age': '47'}])
 
 
-def test_get_anime_by_id(url: str):
+def test_get_company_by_id(url: str):
     res = requests.get(url).json()
-    assert(res == {'casts_id': 1, 'name':'Naruto', 'plot': 'Аниме для людей от 12+', 'genres': 'боевик'})
-    print("3")
+    assert(res == {'companies_id': 1, 'name': 'Альфа-Банк',
+     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
+     'industry': 'Economy', 'age': '34'})
 
 
 if __name__ == '__main__':
-    URL = 'http://127.0.0.1:80/api/v1/animes/'
-    test_get_anime_by_id(URL + '1')
-    test_get_all_anime(URL)
+    URL = 'http://127.0.0.1:80/api/v1/companies/'
+    test_get_company_by_id(URL + '1')
+    test_get_all_companies(URL)
