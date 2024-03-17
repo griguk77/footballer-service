@@ -1,26 +1,28 @@
 import requests
 
-def test_get_all_companies(url: str):
+def test_get_all_footballers(url: str):
     res = requests.get(url).json()
-    assert(res == [{'companies_id': 1, 'name': 'Альфа-Банк',
-     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
-     'industry': 'Economy', 'age': '34'},
-    {'companies_id': 2, 'name': 'Ozon',
-     'descrption': 'Ведущая мультикатегорийная платформа электронной коммерции и одна из крупнейших интернет-компаний в России',
-     'industry': 'MarketPlace', 'age': '26'},
-    {'companies_id': 3, 'name': 'Apple',
-     'descrption': 'Американская корпорация, разработчик персональных и планшетных компьютеров, аудиоплееров, смартфонов, программного обеспечения и цифрового контента',
-     'industry': 'Electronic Device', 'age': '47'}])
+    assert(res == [
+    {'footballers_id': 1, 'name': 'Mbappe',
+     'country': 'France',
+     'goals': '50', 'age': '34'},
+    {'footballers_id': 2, 'name': 'Ronaldo',
+     'country': 'Portugal',
+     'goals': '5', 'age': '26'},
+    {'footballers_id': 3, 'name': 'Akinfeev',
+     'country': 'Russia',
+     'goals': '90', 'age': '47'}
+])
 
 
-def test_get_company_by_id(url: str):
+def test_get_footballer_by_id(url: str):
     res = requests.get(url).json()
-    assert(res == {'companies_id': 1, 'name': 'Альфа-Банк',
-     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
-     'industry': 'Economy', 'age': '34'})
+    assert(res == {'footballers_id': 1, 'name': 'Mbappe',
+     'country': 'France',
+     'goals': '50', 'age': '34'})
 
 
 if __name__ == '__main__':
-    URL = 'http://127.0.0.1:80/api/v1/companies/'
-    test_get_company_by_id(URL + '1')
-    test_get_all_companies(URL)
+    URL = 'http://127.0.0.1:80/api/v1/footballers/'
+    test_get_footballer_by_id(URL + '1')
+    test_get_all_footballers(URL)

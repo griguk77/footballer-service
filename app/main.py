@@ -2,33 +2,33 @@ from fastapi import FastAPI, APIRouter
 
 app = FastAPI(openapi_url="/api/v1/footballers/openapi.json", docs_url="/api/v1/footballers/docs")
 
-companies_router = APIRouter()
+footballers_router = APIRouter()
 
-companies = [
-    {'companies_id': 1, 'name': 'Альфа-Банк',
-     'descrption': 'Крупнейшее финансово-кредитное учреждение с универсальным подходом к ведению бизнеса',
-     'industry': 'Economy', 'age': '34'},
-    {'companies_id': 2, 'name': 'Ozon',
-     'descrption': 'Ведущая мультикатегорийная платформа электронной коммерции и одна из крупнейших интернет-компаний в России',
-     'industry': 'MarketPlace', 'age': '26'},
-    {'companies_id': 3, 'name': 'Apple',
-     'descrption': 'Американская корпорация, разработчик персональных и планшетных компьютеров, аудиоплееров, смартфонов, программного обеспечения и цифрового контента',
-     'industry': 'Electronic Device', 'age': '47'}
+footballers = [
+    {'footballers_id': 1, 'name': 'Mbappe',
+     'country': 'France',
+     'goals': '50', 'age': '34'},
+    {'footballers_id': 2, 'name': 'Ronaldo',
+     'country': 'Portugal',
+     'goals': '5', 'age': '26'},
+    {'footballers_id': 3, 'name': 'Akinfeev',
+     'country': 'Russia',
+     'goals': '90', 'age': '47'}
 ]
 
 
-@companies_router.get("/")
-async def read_companies():
-    return companies
+@footballers_router.get("/")
+async def read_footballers():
+    return footballers
 
-@companies_router.get("/{companies_id}")
-async def read_company(companies_id: int):
-    for company in companies:
-        if company['companies_id'] == companies_id:
-            return company
+@footballers_router.get("/{footballers_id}")
+async def read_footballer(footballers_id: int):
+    for footballer in footballers:
+        if footballer['footballers_id'] == footballers_id:
+            return footballer
     return None
 
-app.include_router(companies_router, prefix='/api/v1/companies', tags=['companies'])
+app.include_router(footballers_router, prefix='/api/v1/footballers', tags=['footballers'])
 
 if __name__ == '__main__':
     import uvicorn
