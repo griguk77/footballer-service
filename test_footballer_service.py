@@ -3,13 +3,13 @@ import requests
 def test_get_all_footballers(url: str):
     res = requests.get(url).json()
     assert(res == [
-    {'footballers_id': 1, 'name': 'Mbappe',
+    {'clubs_id': 1, 'name': 'Mbappe',
      'country': 'France',
      'goals': '50', 'age': '34'},
-    {'footballers_id': 2, 'name': 'Ronaldo',
+    {'clubs_id': 1, 'name': 'Ronaldo',
      'country': 'Portugal',
      'goals': '5', 'age': '26'},
-    {'footballers_id': 3, 'name': 'Akinfeev',
+    {'clubs_id': 2, 'name': 'Akinfeev',
      'country': 'Russia',
      'goals': '90', 'age': '47'}
 ])
@@ -17,9 +17,13 @@ def test_get_all_footballers(url: str):
 
 def test_get_footballer_by_id(url: str):
     res = requests.get(url).json()
-    assert(res == {'footballers_id': 1, 'name': 'Mbappe',
+    assert(res == [
+    {'clubs_id': 1, 'name': 'Mbappe',
      'country': 'France',
-     'goals': '50', 'age': '34'})
+     'goals': '50', 'age': '34'},
+    {'clubs_id': 1, 'name': 'Ronaldo',
+     'country': 'Portugal',
+     'goals': '5', 'age': '26'}])
 
 
 if __name__ == '__main__':
