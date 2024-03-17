@@ -4,7 +4,6 @@ import requests
 def test_get_all_footballer(url: str):
     res = requests.get(url).json()
     assert (res == [{'clubs_id': 1, 'name': 'Killian', 'surname': 'Mbappe', 'age': 24, 'goals': 135},
-                    {'clubs_id': 1, 'name': 'Fabian', 'surname': 'Ruiz', 'age': 27, 'goals': 86},
                     {'clubs_id': 2, 'name': 'Cristiano', 'surname': 'Ronaldo', 'age': 31, 'goals': 837}])
 
 
