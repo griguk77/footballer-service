@@ -14,6 +14,11 @@ footballers = [
     {'clubs_id': 2, 'name': 'Cristiano', 'surname': 'Ronaldo', 'age': 31, 'goals': 837}
 ]
 
+animes = [
+    {'casts_id': 1, 'name':'Naruto', 'plot': 'Аниме для людей от 12+', 'genres': 'боевик'},
+    {'casts_id': 2, 'name':'Слабый герой', 'plot': 'Дорама для вечернего просмотра', 'genres': 'приключения'}
+]
+
 
 @footballers_router.get("/")
 async def read_footballers():
