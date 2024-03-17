@@ -15,7 +15,7 @@ footballers = Table(
     Column('surname', String(250)),
     Column('age', Integer),
     Column('goals', Integer),
-    Column('clubs_id', Integer)
+    Column('clubs_id', ARRAY(Integer))
 )
 
 database = Database(DATABASE_URI)
