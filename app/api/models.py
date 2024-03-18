@@ -4,9 +4,9 @@ from typing import List, Optional
 
 class FootballerIn(BaseModel):
     name: str
-    surname: str
-    age: int
+    country: str
     goals: int
+    age: int
     clubs_id: int
 
 
@@ -16,7 +16,7 @@ class FootballerOut(FootballerIn):
 
 class FootballerUpdate(FootballerIn):
     name: Optional[str] = None
-    surname: Optional[str] = None
-    age: Optional[int] = None
+    country: Optional[str] = None
     goals: Optional[int] = None
+    age: Optional[int] = None
     clubs_id: Optional[int] = None
