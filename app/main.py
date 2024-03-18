@@ -13,13 +13,17 @@ footballers = [
      'goals': '5', 'age': '26'},
     {'clubs_id': 3, 'name': 'Akinfeev',
      'country': 'Russia',
-     'goals': '90', 'age': '47'}
+     'goals': '90', 'age': '47'},
+    {'clubs_id': 3, 'name': 'Dzagoev',
+     'country': 'Russia',
+     'goals': '105', 'age': '36'}
 ]
 
 
 @footballers_router.get("/")
 async def read_footballers():
     return footballers
+
 
 @footballers_router.get("/{clubs_id}")
 async def read_footballer(clubs_id: int):
@@ -28,11 +32,13 @@ async def read_footballer(clubs_id: int):
             return footballer
     return None
 
+
 app.include_router(footballers_router, prefix='/api/v1/footballers', tags=['footballers'])
 
 if __name__ == '__main__':
     import uvicorn
     import os
+
     try:
         PORT = int(os.environ['PORT'])
     except KeyError as keyerr:
