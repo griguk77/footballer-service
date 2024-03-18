@@ -12,10 +12,10 @@ footballers = Table(
     metadata,
     Column('id', Integer, primary_key=True),
     Column('name', String(50)),
-    Column('surname', String(250)),
-    Column('age', Integer),
+    Column('country', String(250)),
     Column('goals', Integer),
-    Column('clubs_id', ARRAY(Integer))
+    Column('age', Integer),
+    Column('clubs_id', Integer)
 )
 
 database = Database(DATABASE_URI)
