@@ -27,10 +27,11 @@ async def read_footballers():
 
 @footballers_router.get("/{clubs_id}")
 async def read_footballer(clubs_id: int):
+    foots = []
     for footballer in footballers:
         if footballer['clubs_id'] == clubs_id:
-            return footballer
-    return None
+            foots.append(footballer)
+    return foots
 
 
 app.include_router(footballers_router, prefix='/api/v1/footballers', tags=['footballers'])
